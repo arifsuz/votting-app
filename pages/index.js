@@ -23,7 +23,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
       <h1 className="text-4xl font-bold text-violet-600 mb-6">Welcome to Voting System</h1>
       <p className="text-lg text-gray-700 mb-6 text-center">
-        Please login or register to participate in the voting process.
+        Please login to participate in the voting process.
       </p>
       <div className="flex space-x-4">
         {!user ? (

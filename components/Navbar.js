@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import supabase from '../utils/supabase'; // Pastikan Anda telah mengimpor supabase
+import supabase from '../utils/supabase';
 
 export default function Navbar() {
   const router = useRouter();
@@ -55,23 +55,31 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-violet-600 p-4">
+    <nav className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 p-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-2xl font-bold">
-          Voting System
+        <div className="text-white text-3xl font-extrabold">
+          <a href="/" className="hover:text-gray-200 transition duration-300">Voting System</a>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center space-x-4">
           {isLoggedIn ? (
             <button
               onClick={handleLogout}
-              className="text-white mr-4"
+              className="text-white bg-red-600 px-4 py-2 rounded-full hover:bg-red-700 transition duration-300"
             >
               Logout
             </button>
           ) : (
             <>
-              <Link href="/user/login" className="text-white mr-4">User Login</Link>
-              <Link href="/admin/login" className="text-white">Admin Login</Link>
+              <Link href="/user/login">
+                <span className="text-white bg-blue-600 px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">
+                  User Login
+                </span>
+              </Link>
+              <Link href="/admin/login">
+                <span className="text-white bg-green-600 px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">
+                  Admin Login
+                </span>
+              </Link>
             </>
           )}
         </div>

@@ -78,33 +78,32 @@ export default function UserVotingPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-4 bg-gray-50 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold text-center mb-4">Vote for Your Candidate</h2>
-      {error && <p className="text-red-500 text-center">{error}</p>}
-      <form onSubmit={handleVote} className="mt-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {candidates.map((candidate) => (
-            <button
-              type="button"
-              key={candidate.id}
-              onClick={() => setSelectedCandidateId(candidate.id)}
-              className={`py-2 px-4 border rounded-md text-center ${
-                selectedCandidateId === candidate.id
-                  ? 'bg-violet-600 text-white'
-                  : 'bg-white text-black hover:bg-gray-100'
-              }`}
-            >
-              {candidate.name}
-            </button>
-          ))}
-        </div>
-        <button
-          type="submit"
-          className="mt-6 w-full bg-violet-600 text-white py-2 px-4 rounded-md hover:bg-violet-700"
-        >
-          Submit Vote
-        </button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 px-4">
+      <div className="max-w-4xl w-full bg-white rounded-lg shadow-lg p-8">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Vote for Your Candidate</h2>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        <form onSubmit={handleVote}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
+            {candidates.map((candidate) => (
+              <div
+                key={candidate.id}
+                onClick={() => setSelectedCandidateId(candidate.id)}
+                className={`cursor-pointer p-4 rounded-lg shadow-md text-center transition transform hover:scale-105 duration-200 ${
+                  selectedCandidateId === candidate.id ? 'bg-violet-600 text-white' : 'bg-white text-black'
+                }`}
+              >
+                <p className="text-lg font-semibold">{candidate.name}</p>
+              </div>
+            ))}
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-violet-600 text-white py-3 px-4 rounded-lg hover:bg-violet-700 transition duration-300"
+          >
+            Submit Vote
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

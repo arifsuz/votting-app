@@ -1,0 +1,46 @@
+-- Table Admin
+CREATE TABLE admin (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table Users
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    nim VARCHAR(20) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    has_voted BOOLEAN DEFAULT FALSE,
+    is_online BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table Candidates
+CREATE TABLE candidates (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    vote_count INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table Votes
+CREATE TABLE votes (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    candidate_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (candidate_id) REFERENCES candidates(id) ON DELETE CASCADE
+);
+
+-- Menambahkan admin default
+INSERT INTO admin (email, password) VALUES ('admin@gmail.com', '$2a$12$fJn5ZxEhtGdeWjFydqUvM.DBwfqKqPqWqZ1vHCxDBruXaRMYByF3K');
+
+Password Users Default: 'KetuaAngkatan2024'
+Password Users Hashing: '$2a$12$3e1/Uv51P6xxuUqGxw.Hvub3wa0PR4MUCMb4FHLQHVFhRVnlwG3Ru'

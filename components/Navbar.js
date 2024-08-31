@@ -58,7 +58,10 @@ export default function Navbar() {
     <nav className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 p-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white text-3xl font-extrabold">
-          <a href="/" className="hover:text-gray-200 transition duration-300">Voting System</a>
+          {/* Ganti <a> dengan <Link> dan <a> di dalamnya untuk navigasi internal */}
+          <Link href="/" passHref>
+            <a className="hover:text-gray-200 transition duration-300">Voting System</a>
+          </Link>
         </div>
         <div className="flex items-center space-x-4">
           {isLoggedIn ? (
@@ -70,15 +73,16 @@ export default function Navbar() {
             </button>
           ) : (
             <>
-              <Link href="/user/login">
-                <span className="text-white bg-blue-600 px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">
+              {/* Gunakan <Link> dengan <a> di dalamnya untuk navigasi internal */}
+              <Link href="/user/login" passHref>
+                <a className="text-white bg-blue-600 px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">
                   User Login
-                </span>
+                </a>
               </Link>
-              <Link href="/admin/login">
-                <span className="text-white bg-green-600 px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">
+              <Link href="/admin/login" passHref>
+                <a className="text-white bg-green-600 px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">
                   Admin Login
-                </span>
+                </a>
               </Link>
             </>
           )}

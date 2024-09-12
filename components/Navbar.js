@@ -73,7 +73,6 @@ export default function Navbar() {
             </button>
           ) : (
             <>
-              {/* Gunakan Link tanpa <a> di dalamnya */}
               <Link href="/user/login" className="text-white bg-blue-600 px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">
                 User Login
               </Link>

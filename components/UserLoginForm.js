@@ -12,7 +12,6 @@ export default function UserLoginForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // Fetch user data from Supabase
       const { data: user, error } = await supabase
         .from('users')
         .select('*')
@@ -24,9 +23,7 @@ export default function UserLoginForm() {
         return;
       }
 
-      // Verify password
       if (user && bcrypt.compareSync(password, user.password)) {
-        // Update user status to online
         const { error: updateError } = await supabase
           .from('users')
           .update({ is_online: true })

@@ -12,7 +12,6 @@ export default function AdminLoginForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // Fetch admin data from Supabase
       const { data: admin, error } = await supabase
         .from('admin')
         .select('*')

@@ -6,10 +6,10 @@ export default function ThankYouPage() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push('/user'); // Redirect to home page after 5 seconds
+      router.push('/user');
     }, 5000);
 
-    return () => clearTimeout(timer); // Cleanup timer on component unmount
+    return () => clearTimeout(timer);
   }, [router]);
 
   return (
